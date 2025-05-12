@@ -2,6 +2,7 @@
 
 const emailService = require('../services/emailService');
 const { validateQuoteRequest } = require('../utils/validation');
+const { sendToGoogleSheet } = require('./sheetcontroller');
 
 /**
  * Controller to handle sending quote requests via email
@@ -35,6 +36,7 @@ const quoteController = {
       
       // Send the email
       await emailService.sendQuoteRequestEmail(emailData);
+      await sendToGoogleSheet(customerInfo, productDetails)
       
       // Return success response
       res.status(200).json({

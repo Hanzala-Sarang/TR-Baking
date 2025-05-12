@@ -255,7 +255,7 @@ const ProductDetailPage = () => {
                     onClick={() => setShowQuoteForm(true)}
                     className="w-full md:w-auto"
                   >
-                    Get Best Qoute
+                    Get Best Quote
                   </Button>
                 </div>
               </div>

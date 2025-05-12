@@ -4,30 +4,35 @@
 
 @layer base {
   html {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply bg-neutral-50 text-neutral-800;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-semibold text-neutral-900;
   }
-  
+
   h1 {
     @apply text-4xl md:text-5xl leading-tight;
   }
-  
+
   h2 {
     @apply text-3xl md:text-4xl leading-tight;
   }
-  
+
   h3 {
     @apply text-2xl md:text-3xl leading-snug;
   }
-  
+
   p {
     @apply leading-relaxed;
   }
@@ -37,15 +42,15 @@
   .container {
     @apply px-4 mx-auto max-w-7xl;
   }
-  
+
   .btn {
     @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-medium transition-all duration-200;
   }
-  
+
   .btn-primary {
     @apply bg-amber-600 text-white hover:bg-amber-700 shadow-md hover:shadow-lg;
   }
-  
+
   .btn-secondary {
     @apply bg-white text-amber-600 border border-amber-600 hover:bg-amber-50;
   }
@@ -57,8 +62,12 @@
 
 /* Loader Animation */
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .loader {

@@ -18,7 +18,7 @@ export const productGroups: ProductGroup[] = [
           "The TRE-12 single trolley rotary rack oven is designed for smaller bakeries and cafes. Equipped with a two-way steamer for abundant and homogeneous steam production. Completely built with stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. With capacity for 12 trays, it ensures consistent and precise baking results while maintaining energy efficiency. Easy to operate and ensures uniform baking with the latest design heat exchanger. All sides covered with mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
         features: [
           "Two-way steamer system for abundant and homogeneous steam production",
-          "Complete stainless steel construction with thicker materials",
+          "Heavy-duty materials",
           "Digital temperature and timer controls",
           "40% reduced fuel consumption design",
           "Mineral wool insulation on all sides",
@@ -51,7 +51,7 @@ export const productGroups: ProductGroup[] = [
           "The TRE-18 single trolley rotary rack oven provides increased capacity for growing bakery operations. Equipped with a two-way steamer for abundant and homogeneous steam production. Completely built with stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. With room for 18 trays, it delivers consistent baking performance and energy efficiency for a range of bakery products. Easy to operate and ensures uniform baking with the latest design heat exchanger. All sides covered with mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
         features: [
           "Two-way steamer system for abundant and homogeneous steam production",
-          "Complete stainless steel construction with thicker materials",
+          "Heavy-duty materials",
           "Digital temperature and timer controls",
           "40% reduced fuel consumption design",
           "Mineral wool insulation on all sides",
@@ -84,7 +84,7 @@ export const productGroups: ProductGroup[] = [
           "The TRE-44 rotary rack oven is designed for medium to large bakeries with high production needs. Equipped with an enhanced two-way steamer for abundant and homogeneous steam production. Completely built with heavy-duty stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. This powerful unit can handle 44 trays at once while maintaining perfect baking consistency and energy efficiency. Easy to operate with advanced digital controls and ensures uniform baking with a high-efficiency heat exchanger. All sides covered with superior mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
         features: [
           "Enhanced two-way steamer system for abundant and homogeneous steam production",
-          "Heavy-duty stainless steel construction with thicker materials",
+          "Heavy-duty materials with thicker materials",
           "Advanced digital control system",
           "40% reduced fuel consumption with high-efficiency heat exchanger",
           "Superior mineral wool insulation on all sides",
@@ -117,8 +117,7 @@ export const productGroups: ProductGroup[] = [
           "The TRE-84 is our highest-capacity rotary rack oven, designed for industrial bakeries and large-scale production environments. Equipped with an industrial-grade two-way steamer for abundant and homogeneous steam production. Completely built with heavy-duty stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. With space for 84 trays, this powerful unit delivers maximum output while maintaining perfect baking consistency and energy efficiency. Easy to operate with advanced digital controls and ensures uniform baking with a maximum-efficiency heat exchanger. All sides covered with premium mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
         features: [
           "Industrial-grade two-way steamer system for abundant and homogeneous steam production",
-          "Heavy-duty stainless steel construction with thicker materials",
-          "Advanced digital control panel",
+          "Heavy-duty materials",
           "40% reduced fuel consumption with maximum-efficiency heat exchanger",
           "Premium mineral wool insulation on all sides",
           "SS 304 grade heating chamber with 202 grade body",
@@ -269,7 +268,6 @@ export const productGroups: ProductGroup[] = [
           "Digital temperature controls",
           "Programmable timer with alarm",
           "Interior lighting",
-          "Stainless steel construction",
           "Energy-efficient operation",
         ],
         specifications: {
@@ -293,7 +291,7 @@ export const productGroups: ProductGroup[] = [
           "Digital temperature and humidity controls",
           "10 programmable recipe settings",
           "Steam injection system",
-          "Heavy-duty stainless steel construction",
+          "Heavy-duty materials",
           "Advanced insulation for energy efficiency",
           "Easy-clean interior surfaces",
         ],
@@ -459,9 +457,8 @@ export const productGroups: ProductGroup[] = [
         features: [
           "20kg flour capacity",
           "Powerful 3HP/1HP dual motor system",
-          "Heavy-duty stainless steel construction",
+          "Heavy-duty materials",
           "Dual mixing speeds",
-          "Removable bowl for easy cleaning",
           "Safety features and emergency stop",
           "Perfect for bread, bun, rusk, and khari production",
           "Enhanced dough kneading quality",
@@ -484,7 +481,7 @@ export const productGroups: ProductGroup[] = [
         features: [
           "30kg flour capacity",
           "Powerful 3HP/1HP dual motor system",
-          "Heavy-duty stainless steel construction",
+          "Heavy-duty materials",
           "Dual mixing speeds",
           "Two-way mixing action",
           "Safety features and emergency stop",
