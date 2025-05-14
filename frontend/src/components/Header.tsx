@@ -35,15 +35,18 @@ const Header = () => {
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white shadow-md py-2'
-          : 'bg-transparent py-4'
+        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2">
-          <ChefHat className="h-8 w-8 text-amber-600" />
-          <span className="text-2xl font-bold text-amber-800">TR Baking Equipments</span>
+        <Link to="/" className="flex flex-col items-start gap-1">
+          <div className="flex items-center gap-2">
+            <ChefHat className="h-8 w-8 text-amber-600" />
+            <span className="text-2xl font-bold text-amber-800">TR Baking Equipments</span>
+          </div>
+          <span className="text-sm md:text-base text-amber-700 font-medium">
+            The Total Bakery Solution
+          </span>
         </Link>
 
         {/* Desktop Navigation */}

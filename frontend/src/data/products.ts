@@ -180,6 +180,7 @@ export const productGroups: ProductGroup[] = [
         images: [
           "/assets/table-top-dough-sheeter-520-image-1.jpg",
           "/assets/table-top-dough-sheeter-520-image-2.jpg",
+          "/assets/table-top-dg-sheeter-3.jpg",
         ],
       },
       {
@@ -209,6 +210,8 @@ export const productGroups: ProductGroup[] = [
           warranty: "1 year",
         },
         images: [
+          "/assets/dg-sheeter-1.jpg",
+          "/assets/dg-sheeter-2.jpg",
           "/assets/dough-sheeter-630-image-1.webp",
           "/assets/dough-sheeter-630-image-2.jpg",
         ],
@@ -241,7 +244,7 @@ export const productGroups: ProductGroup[] = [
           warranty: "1 year",
         },
         images: [
-          "/assets/dough-sheeter-image-1.jpeg",
+          "/assets/dg-sheeter-3.jpg",
           "/assets/dough-sheeter-image-2.jpeg",
           "/assets/dough-sheeter-image-3.jpeg",
         ],
@@ -255,7 +258,7 @@ export const productGroups: ProductGroup[] = [
     category: "Convection Oven",
     description:
       "Commercial convection ovens with forced air circulation for faster, more even baking. Ideal for bakeries, restaurants, and commercial kitchens of all sizes.",
-    primaryImage: "/assets/convection-oven.jpg",
+    primaryImage: "/assets/convection-oven-2.jpg",
     variants: [
       {
         id: 19,
@@ -278,7 +281,10 @@ export const productGroups: ProductGroup[] = [
           power: "3.5 kW, 220V",
           warranty: "1 year",
         },
-        images: ["/assets/convection-oven.jpg"],
+        images: [
+          "/assets/convection-oven.jpg",
+          "/assets/convection-oven-4.jpg",
+        ],
       },
       {
         id: 20,
@@ -303,7 +309,10 @@ export const productGroups: ProductGroup[] = [
           power: "6.5 kW, 220V",
           warranty: "1 year",
         },
-        images: ["/assets/convection-oven.jpg"],
+        images: [
+          "/assets/convection-oven-3.jpg",
+          "/assets/convection-oven-4.jpg",
+        ],
       },
       {
         id: 21,
@@ -326,7 +335,10 @@ export const productGroups: ProductGroup[] = [
           power: "9 kW, 380V Three Phase",
           warranty: "1 year",
         },
-        images: ["/assets/convection-oven.jpg"],
+        images: [
+          "/assets/convection-oven-5.jpg",
+          "/assets/convection-oven-4.jpg",
+        ],
       },
     ],
   },
@@ -361,7 +373,7 @@ export const productGroups: ProductGroup[] = [
           power: "0.75 HP, 220V",
           warranty: "1 year",
         },
-        images: ["/assets/10-L-planetary-mixer.webp"],
+        images: ["/assets/planetary-mixer-1.jpg"],
       },
       {
         id: 13,
@@ -470,7 +482,10 @@ export const productGroups: ProductGroup[] = [
           power: "3HP/1HP, 220V",
           warranty: "1 year",
         },
-        images: ["/assets/spiral-mixer-20-kg.webp"],
+        images: [
+          "/assets/spiral-mixer-1.jpg",
+          "/assets/spiral-mixer-20-kg.webp",
+        ],
       },
       {
         id: 6,
@@ -495,7 +510,10 @@ export const productGroups: ProductGroup[] = [
           power: "3HP/1HP, 220V",
           warranty: "1 year",
         },
-        images: ["/assets/spiral-mixer-20-kg.webp"],
+        images: [
+          "/assets/spiral-mixer-2.jpg",
+          "/assets/spiral-mixer-20-kg.webp",
+        ],
       },
       {
         id: 26,
@@ -520,7 +538,10 @@ export const productGroups: ProductGroup[] = [
           power: "5HP/1HP, 220V/380V",
           warranty: "1 year",
         },
-        images: ["/assets/spiral-mixer-20-kg.webp"],
+        images: [
+          "/assets/spiral-mixer-3.jpg",
+          "/assets/spiral-mixer-20-kg.webp",
+        ],
       },
       {
         id: 8,
@@ -545,7 +566,10 @@ export const productGroups: ProductGroup[] = [
           power: "7HP/2HP, 380V Three Phase",
           warranty: "1 year",
         },
-        images: ["/assets/100-kg-spiral-mixer.webp"],
+        images: [
+          "/assets/spiral-mixer-4.jpg",
+          "/assets/100-kg-spiral-mixer.webp",
+        ],
       },
       {
         id: 27,
@@ -570,7 +594,11 @@ export const productGroups: ProductGroup[] = [
           power: "10HP/3HP, 380V Three Phase",
           warranty: "1 year",
         },
-        images: ["/assets/100-kg-spiral-mixer.webp"],
+        images: [
+          "/assets/spiral-mixer-4.jpg",
+          "/assets/spiral-mixer-5.jpg",
+          "/assets/100-kg-spiral-mixer.webp",
+        ],
       },
     ],
   },
@@ -579,23 +607,20 @@ export const productGroups: ProductGroup[] = [
     name: "Toast/Bread Slicer",
     category: "Toast Bread Slicer",
     description:
-      "High Speed Toast Slicer Machine provided by our company is designed for low maintenance with the maintenance manager in mind. This machine is used in the slicing of bread, rusk and toasts. This machine has precision engineering design means reduced maintenance and less wear. This machine uses food grade high grip conveyor belts. High Speed Toast Slicer Machine has soft start, soft stop features reduce machine wear. This machine possesses speed ramp-up and slow-down capabilities for in-line mass production. This has slicing blade angle set for optimum slicing efficiency. This is very cost effective as it requires very low maintenance and operating costs.",
-    primaryImage: "/assets/toast-slicer-machine-14mm.webp",
+      "High Speed Toast Slicer Machine provided by our company is designed for low maintenance with the maintenance manager in mind. This machine is used in the slicing of bread, rusk and toasts. This machine has precision engineering design means reduced maintenance and less wear. This machine uses food grade high grip conveyor belts. High Speed Toast Slicer Machine has soft start, soft stop features reduce machine wear. This has slicing blade angle set for optimum slicing efficiency. This is very cost effective as it requires very low maintenance and operating costs.",
+    primaryImage: "/assets/bread-slicer-1.jpg",
     variants: [
       {
         id: 10,
         name: "Table Top Bread Slicer TRE-SR12",
         model: "TRE-SR12",
         description:
-          "The TRE-SR12 stand model bread slicer offers high-speed slicing for commercial bakeries with output capacity of 400-600 loaves per hour. Designed for low maintenance with the maintenance manager in mind, this machine is used in the slicing of bread, rusk and toasts. It features precision engineering design that means reduced maintenance and less wear. The machine uses food grade high grip conveyor belts with soft start, soft stop features to reduce machine wear. It possesses speed ramp-up and slow-down capabilities for in-line mass production with slicing blade angle set for optimum slicing efficiency. Perfect for standard bread loaves with precision slicing, this slicer is very cost effective as it requires very low maintenance and operating costs.",
+          "The TRE-SR12 stand model bread slicer offers high-speed slicing for commercial bakeries with output capacity of 400-600 loaves per hour. Designed for low maintenance with the maintenance manager in mind, this machine is used in the slicing of bread, rusk and toasts. It features precision engineering design that means reduced maintenance and less wear. The machine uses food grade high grip conveyor belts with soft start, soft stop features to reduce machine wear. Perfect for standard bread loaves with precision slicing, this slicer is very cost effective as it requires very low maintenance and operating costs.",
         features: [
           "Stand model design",
           "Output: 400-600 loaves per hour",
           "1HP powerful motor",
           "Precision engineering for reduced maintenance and less wear",
-          "Food-grade high grip conveyor belts",
-          "Soft start/stop features to reduce machine wear",
-          "Speed ramp-up and slow-down capabilities for in-line mass production",
           "Optimized slicing blade angles for maximum efficiency",
           "Low maintenance and operating costs",
         ],
@@ -606,23 +631,22 @@ export const productGroups: ProductGroup[] = [
           power: "1HP, 220V",
           warranty: "1 year",
         },
-        images: ["/assets/toast-slicer-machine-14mm.webp"],
+        images: [
+          "/assets/bread-slicer-1.jpg",
+          "/assets/toast-slicer-machine-14mm.webp",
+        ],
       },
       {
         id: 11,
         name: "Table Top Toast Slicer TRE-SR14",
         model: "TRE-SR14",
         description:
-          "The TRE-SR14 table top toast slicer is specifically designed for smaller bakeries with output capacity of 300 loaves per hour. Designed for low maintenance with the maintenance manager in mind, this machine is used in the slicing of bread, rusk and toasts. It features precision engineering design that means reduced maintenance and less wear. The machine uses food grade high grip conveyor belts with soft start, soft stop features to reduce machine wear. It possesses speed ramp-up and slow-down capabilities for in-line mass production with slicing blade angle set for optimum slicing efficiency. It delivers perfect slices for toasting applications and sandwich preparation while being very cost effective as it requires very low maintenance and operating costs.",
+          "The TRE-SR14 table top toast slicer is specifically designed for smaller bakeries with output capacity of 300 loaves per hour. Designed for low maintenance with the maintenance manager in mind, this machine is used in the slicing of bread, rusk and toasts. It features precision engineering design that means reduced maintenance and less wear. The machine uses food grade high grip conveyor belts with soft start, soft stop features to reduce machine wear. It delivers perfect slices for toasting applications and sandwich preparation while being very cost effective as it requires very low maintenance and operating costs.",
         features: [
           "Compact table top design",
           "Output: 300 loaves per hour",
           "0.5HP efficient motor",
           "Precision engineering for reduced maintenance and less wear",
-          "Food-grade high grip conveyor belts",
-          "Soft start/stop features to reduce machine wear",
-          "Speed ramp-up and slow-down capabilities for in-line production",
-          "Optimized blade angles for perfect slicing efficiency",
           "Low maintenance and operating costs",
         ],
         specifications: {
@@ -632,7 +656,10 @@ export const productGroups: ProductGroup[] = [
           power: "0.5HP, 220V",
           warranty: "1 year",
         },
-        images: ["/assets/toast-slicer-machine-14mm.webp"],
+        images: [
+          "/assets/bread-slicer-2.jpg",
+          "/assets/toast-slicer-machine-14mm.webp",
+        ],
       },
     ],
   },
@@ -643,7 +670,7 @@ export const productGroups: ProductGroup[] = [
     name: "Deck Oven",
     category: "Deck Oven",
     description:
-      "Professional deck ovens with stone baking surfaces for artisan breads, pizzas, and pastries. Available in single, double, and triple deck configurations with varying tray capacities to meet different production needs.",
+      "Professional deck ovens for artisan breads, pizzas, and pastries. Available in single, double, and triple deck configurations with varying tray capacities to meet different production needs.",
     primaryImage: "/assets/deck-oven.jpg",
     variants: [
       {
@@ -655,7 +682,6 @@ export const productGroups: ProductGroup[] = [
         features: [
           "Single deck configuration",
           "2 tray capacity",
-          "Natural stone baking surface",
           "Independent top and bottom heating elements",
           "Digital temperature controls",
           "Stainless steel exterior",
@@ -680,7 +706,6 @@ export const productGroups: ProductGroup[] = [
         features: [
           "Single deck configuration",
           "3 tray capacity",
-          "Stone baking surface",
           "Balanced heating system",
           "Digital temperature controls",
           "Heavy-duty construction",
@@ -705,7 +730,6 @@ export const productGroups: ProductGroup[] = [
         features: [
           "Single deck configuration",
           "4 tray capacity",
-          "Premium stone baking surface",
           "Advanced heating element design",
           "Digital control panel",
           "Commercial-grade construction",
@@ -730,7 +754,6 @@ export const productGroups: ProductGroup[] = [
         features: [
           "Single deck configuration",
           "6 tray capacity",
-          "Extra-wide stone baking surface",
           "Multiple heating zones",
           "Programmable digital controls",
           "Heavy-duty commercial construction",
@@ -755,7 +778,6 @@ export const productGroups: ProductGroup[] = [
         features: [
           "Single deck configuration",
           "8 tray capacity",
-          "Extra-large stone baking surface",
           "Multi-zone heating system",
           "Advanced digital control panel",
           "Industrial-grade construction",
@@ -769,7 +791,7 @@ export const productGroups: ProductGroup[] = [
           power: "Three phase electric high amperage",
           warranty: "1 year",
         },
-        images: ["/assets/deck-oven.jpg"],
+        images: ["/assets/1-deck-8-tray.jpg", "/assets/deck-oven.jpg"],
       },
       {
         id: 33,
@@ -780,7 +802,6 @@ export const productGroups: ProductGroup[] = [
         features: [
           "Double deck configuration",
           "4 tray total capacity (2 per deck)",
-          "Dual independent stone baking surfaces",
           "Separate temperature controls for each deck",
           "Digital timers and controls",
           "Space-efficient vertical design",
@@ -794,7 +815,7 @@ export const productGroups: ProductGroup[] = [
           power: "Three phase electric",
           warranty: "1 year",
         },
-        images: ["/assets/deck-oven.jpg"],
+        images: ["/assets/deck-oven-1.jpg"],
       },
       {
         id: 34,
@@ -805,7 +826,6 @@ export const productGroups: ProductGroup[] = [
         features: [
           "Double deck configuration",
           "6 tray total capacity (3 per deck)",
-          "Dual independent stone baking surfaces",
           "Separate temperature and steam controls",
           "Digital control system",
           "Durable commercial construction",
@@ -819,7 +839,7 @@ export const productGroups: ProductGroup[] = [
           power: "Three phase electric",
           warranty: "1 year",
         },
-        images: ["/assets/deck-oven.jpg"],
+        images: ["/assets/deck-oven-1.jpg"],
       },
       {
         id: 35,
@@ -830,7 +850,6 @@ export const productGroups: ProductGroup[] = [
         features: [
           "Triple deck configuration",
           "6 tray total capacity (2 per deck)",
-          "Three independent stone baking surfaces",
           "Individual controls for each deck",
           "Digital interface with program memory",
           "Vertical space-saving design",
@@ -844,7 +863,7 @@ export const productGroups: ProductGroup[] = [
           power: "Three phase electric",
           warranty: "1 year",
         },
-        images: ["/assets/deck-oven.jpg"],
+        images: ["/assets/deck-oven-2.jpg"],
       },
       {
         id: 36,
@@ -855,7 +874,6 @@ export const productGroups: ProductGroup[] = [
         features: [
           "Triple deck configuration",
           "9 tray total capacity (3 per deck)",
-          "Three separate stone baking surfaces",
           "Independent temperature and steam controls for each deck",
           "Advanced digital control system with recipe storage",
           "Professional-grade construction",
@@ -869,7 +887,7 @@ export const productGroups: ProductGroup[] = [
           power: "Three phase electric high capacity",
           warranty: "1 year",
         },
-        images: ["/assets/deck-oven.jpg"],
+        images: ["/assets/deck-oven-2.jpg"],
       },
     ],
   },
