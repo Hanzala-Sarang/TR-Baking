@@ -27,7 +27,7 @@ console.log(featuredProducts);
 
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-[#FEFBEA]">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
           <SectionHeading

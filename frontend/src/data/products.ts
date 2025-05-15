@@ -71,10 +71,7 @@ export const productGroups: ProductGroup[] = [
           khariOutput: "7kg per trolley",
           warranty: "1 year",
         },
-        images: [
-          "/assets/42-tray-rotary-rack-oven-500x500.webp",
-          "/assets/42-Tray-Rotary-Rack-Oven2.webp",
-        ],
+        images: ["/assets/42-tray-rotary-rack-oven-500x500.webp"],
       },
       {
         id: 4,
@@ -104,10 +101,7 @@ export const productGroups: ProductGroup[] = [
           khariOutput: "9.5kg per trolley",
           warranty: "1 year",
         },
-        images: [
-          "/assets/42-tray-rotary-rack-oven-500x500.webp",
-          "/assets/42-Tray-Rotary-Rack-Oven2.webp",
-        ],
+        images: ["/assets/42-tray-rotary-rack-oven-500x500.webp"],
       },
       {
         id: 25,
@@ -136,10 +130,7 @@ export const productGroups: ProductGroup[] = [
           khariOutput: "25kg per trolley",
           warranty: "1 year",
         },
-        images: [
-          "/assets/72-tray-rotary-rack-oven.jpg",
-          "/assets/72-tray-rotary-rack-oven2.jpeg",
-        ],
+        images: ["/assets/72-tray-rotary-rack-oven.jpg"],
       },
     ],
   },

@@ -1,140 +1,218 @@
-'use client';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState, useEffect } from 'react';
 import { Send, CheckCircle, XCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-interface FormData {
+interface FormErrors {
   name: string;
   email: string;
-  Phone: string;
+  phone: string;
   message: string;
 }
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [errors, setErrors] = useState<FormErrors>({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<FormData>();
+  useEffect(() => {
+    if (submitStatus) {
+      const timer = setTimeout(() => setSubmitStatus(null), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
 
-  // ContactForm.tsx
+  const validateForm = () => {
+    let isValid = true;
+    const newErrors: FormErrors = { name: '', email: '', phone: '', message: '' };
 
-const onSubmit = async (data: FormData) => {
-  setIsSubmitting(true);
-  try {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/contact`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ...data,
-      }),
-    });
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+      isValid = false;
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)) {
+      newErrors.email = 'Invalid email address';
+      isValid = false;
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+      isValid = false;
+    }
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+      isValid = false;
+    } else if (formData.message.length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+      isValid = false;
+    }
 
-    if (!res.ok) throw new Error('Network response was not ok');
+    setErrors(newErrors);
+    return isValid;
+  };
 
-    setSubmitStatus('success');
-    reset();
-  } catch (err) {
-    console.error('Submission failed:', err);
-    setSubmitStatus('error');
-  } finally {
-    setIsSubmitting(false);
-    setTimeout(() => setSubmitStatus(null), 5000);
-  }
-};
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear the error message for the field being changed
+    setErrors({ ...errors, [e.target.name]: '' });
+  };
 
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Network response was not ok');
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', phone: '', message: '' }); // Reset form
+    } catch (err) {
+      console.error('Submission failed:', err);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="p-8 pr-3 rounded-xl space-y-6 text-gray-800"
+    <motion.form
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      onSubmit={onSubmit}
+      className="p-6 rounded-xl space-y-8 bg-white/5 backdrop-blur-md shadow-lg border border-white/10"
     >
       {submitStatus === 'success' && (
-        <div className="p-4 bg-green-50 text-green-700 rounded-md flex items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 20 }}
+          className="p-4 bg-green-500/10 text-green-400 rounded-md flex items-center"
+        >
           <CheckCircle className="h-5 w-5 mr-2" />
-          Message sent successfully!
-        </div>
+          Thank you! Your message has been sent.
+        </motion.div>
       )}
       {submitStatus === 'error' && (
-        <div className="p-4 bg-red-50 text-red-700 rounded-md flex items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 20 }}
+          className="p-4 bg-red-500/10 text-red-400 rounded-md flex items-center"
+        >
           <XCircle className="h-5 w-5 mr-2" />
-          Something went wrong. Please try again.
-        </div>
+          We encountered an error. Please try again.
+        </motion.div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block mb-1 text-xl text-black font-700 font-sans">Name</label>
+          <label className="block mb-2 text-lg font-semibold text-black">Name</label>
           <input
             type="text"
             placeholder="Enter your name"
-            {...register('name', { required: 'Name is required' })}
-            className="w-full border-b border-gray-500 rounded-md p-2 text-black focus:border-black focus:outline-none"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className={`w-full px-4 py-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-black
+                      bg-black/20 border ${
+                        errors.name ? "border-red-500 focus:ring-red-500" : "border-white/10"
+                      } placeholder:text-black`}
           />
-          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+          {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
         </div>
 
         <div>
-          <label className="block mb-1 text-xl font-sans font-700 text-black">Email</label>
+          <label className="block mb-2 text-lg font-semibold text-black">Email</label>
           <input
             type="email"
             placeholder="yourmail@example.com"
-            {...register('email', {
-              required: 'Email is required',
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Invalid email address',
-              },
-            })}
-            className="w-full border-b border-gray-500 rounded-md p-2 text-black focus:border-black focus:outline-none"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={`w-full px-4 py-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-black
+                      bg-black/20 border ${
+                        errors.email ? "border-red-500 focus:ring-red-500" : "border-white/10"
+                      } placeholder:text-black`}
           />
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+          {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block mb-1 text-xl font-sans text-black font-700">Phone</label>
+          <label className="block mb-2 text-lg font-semibold text-black">Phone</label>
           <input
             type="text"
             placeholder="Enter your phone number"
-            {...register('Phone', { required: 'Phone number is required' })}
-            className="w-full border-b border-gray-500 rounded-md p-2 text-black focus:border-black focus:outline-none"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className={`w-full px-4 py-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-black
+                      bg-black/20 border ${
+                        errors.phone ? "border-red-500 focus:ring-red-500" : "border-white/10"
+                      } placeholder:text-black`}
           />
-          {errors.Phone && <p className="text-red-500 text-sm mt-1">{errors.Phone.message}</p>}
+          {errors.phone && <p className="text-red-400 text-sm mt-1">{errors.phone}</p>}
         </div>
       </div>
 
       <div>
-        <label className="block mb-1 text-xl font-sans text-black font-700">Message</label>
+        <label className="block mb-2 text-lg font-semibold text-black">Message</label>
         <textarea
           rows={4}
           placeholder="Write your message..."
-          {...register('message', {
-            required: 'Message is required',
-            minLength: {
-              value: 10,
-              message: 'Message must be at least 10 characters',
-            },
-          })}
-          className="w-full text-black border-b border-gray-500 rounded-md p-2 focus:border-black focus:outline-none bg-white"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          className={`w-full px-4 py-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-black
+                    bg-black/20 border ${
+                      errors.message ? "border-red-500 focus:ring-red-500" : "border-white/10"
+                    } placeholder:text-black resize-none`}
         ></textarea>
-        {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
+        {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="bg-black text-white px-4 py-2 rounded-md hover:bg-white hover:text-black flex items-center space-x-2 disabled:bg-gray-500 disabled:text-gray-400 disabled:cursor-not-allowed"
+        className={`w-full px-6 py-3 rounded-full flex items-center justify-center gap-2 transition-all duration-300
+                  ${
+                    isSubmitting
+                      ? "bg-gray-700 text-gray-300 cursor-not-allowed"
+                      : "bg-black text-white hover:bg-gray-800"
+                  } focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50`}
       >
         <Send size={18} />
         <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
       </button>
-    </form>
+    </motion.form>
   );
 };
 

@@ -88,17 +88,17 @@ const Footer = () => {
             <h3 className="text-white text-lg font-semibold mb-4">Products</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/products?category=mixers" className="text-neutral-400 hover:text-amber-500 transition-colors">
+                <Link to="/products?category=spiral+mixer" className="text-neutral-400 hover:text-amber-500 transition-colors">
                   Mixers
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=ovens" className="text-neutral-400 hover:text-amber-500 transition-colors">
+                <Link to="/products?category=convection+oven" className="text-neutral-400 hover:text-amber-500 transition-colors">
                   Ovens
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=baking tools" className="text-neutral-400 hover:text-amber-500 transition-colors">
+                <Link to="/products?category=rotary+rack+oven" className="text-neutral-400 hover:text-amber-500 transition-colors">
                   Baking Tools
                 </Link>
               </li>
