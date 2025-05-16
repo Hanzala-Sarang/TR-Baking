@@ -147,17 +147,16 @@ export const productGroups: ProductGroup[] = [
         name: "Dough Sheeter Model: TR 520 (Table Top)",
         model: "TR 520 (Table Top)",
         description:
-          "The JDR-650 Dough Sheeter is a robust, floor-standing machine engineered for high-volume bakeries and pastry kitchens. With its 650mm wide rollers and adjustable thickness settings, it ensures consistent and efficient dough sheeting for various baked goods.",
+          "The TR-520 Dough Sheeter is a robust, floor-standing machine engineered for high-volume bakeries and pastry kitchens. With its 650mm wide rollers and adjustable thickness settings, it ensures consistent and efficient dough sheeting for various baked goods.",
         features: [
           "Powerful 0.75 kW Motor",
           "8-quart stainless steel bowl",
-          "10 speed settings",
           "Adjustable Thickness Settings",
           "Foldable Design",
           "High Dough Capacity",
         ],
         specifications: {
-          Model: "JDR-650",
+          Model: "TR-520",
           dimensions: "2950mm x 1100mm x 1180mm",
           weight: "200 kg",
           BeltWidth: "650 mm",
@@ -179,7 +178,7 @@ export const productGroups: ProductGroup[] = [
         name: "Dough Sheeter Model: TR 520",
         model: "TR 520",
         description:
-          "The JDR-650 Dough Sheeter is a robust, floor-standing machine engineered for high-volume bakeries and pastry kitchens. With its 650mm wide rollers and adjustable thickness settings, it ensures consistent and efficient dough sheeting for various baked goods.",
+          "The TR 520 Dough Sheeter is a robust, floor-standing machine engineered for high-volume bakeries and pastry kitchens. With its 650mm wide rollers and adjustable thickness settings, it ensures consistent and efficient dough sheeting for various baked goods.",
         features: [
           "Powerful 0.75 kW Motor",
           "8-quart stainless steel bowl",
@@ -189,7 +188,7 @@ export const productGroups: ProductGroup[] = [
           "High Dough Capacity",
         ],
         specifications: {
-          Model: "JDR-650",
+          Model: "TR-520",
           dimensions: "2950mm x 1100mm x 1180mm",
           weight: "200 kg",
           BeltWidth: "650 mm",
@@ -209,21 +208,20 @@ export const productGroups: ProductGroup[] = [
       },
       {
         id: 18,
-        name: "Dough Sheeter Model: TR 630",
-        model: "TR 630",
+        name: "Dough Sheeter Model: TR 650",
+        model: "TR 650",
         description:
-          "The JDR-650 Dough Sheeter is a robust, floor-standing machine engineered for high-volume bakeries and pastry kitchens. With its 650mm wide rollers and adjustable thickness settings, it ensures consistent and efficient dough sheeting for various baked goods.",
+          "The TR 650 Dough Sheeter is a robust, floor-standing machine engineered for high-volume bakeries and pastry kitchens. With its 650mm wide rollers and adjustable thickness settings, it ensures consistent and efficient dough sheeting for various baked goods.",
         features: [
           "Powerful 0.75 kW Motor",
           "8-quart stainless steel bowl",
-          "10 speed settings",
           "Adjustable Thickness Settings",
           "Durable Construction",
           "Foldable Design",
           "High Dough Capacity",
         ],
         specifications: {
-          Model: "JDR-650",
+          Model: "TR-650",
           dimensions: "2950mm x 1100mm x 1180mm",
           weight: "200 kg",
           BeltWidth: "650 mm",

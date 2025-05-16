@@ -19,7 +19,7 @@ const AboutPage = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-amber-900">About TR Baking Equipments</h1>
             <p className="text-lg text-neutral-700">
-              Providing premium bakery equipment for over 15 years
+              Providing premium bakery equipment for over 8 years
             </p>
           </div>
         </div>
