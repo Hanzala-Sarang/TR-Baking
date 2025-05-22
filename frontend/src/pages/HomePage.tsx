@@ -16,8 +16,8 @@ const HomePage = () => {
   return (
     <>
       <Hero />
-      <CategorySection />
       <FeaturedProducts />
+      <CategorySection />
       <TestimonialSection />
     </>
   );

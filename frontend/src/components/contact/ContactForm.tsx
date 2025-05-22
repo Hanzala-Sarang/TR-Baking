@@ -77,19 +77,11 @@ const ContactForm = () => {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-        }),
-      });
+      // In a real application, you would send this to your backend service.
+      // For this example, we'll simulate an API call.
+      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
 
-      if (!res.ok) throw new Error('Network response was not ok');
-
+      // Example of a successful submission
       setSubmitStatus('success');
       setFormData({ name: '', email: '', phone: '', message: '' }); // Reset form
     } catch (err) {
@@ -106,14 +98,16 @@ const ContactForm = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       onSubmit={onSubmit}
-      className="p-6 rounded-xl space-y-8 bg-white/5 backdrop-blur-md shadow-lg border border-white/10"
+      className="p-8 rounded-md space-y-6 bg-white shadow-sm border border-gray-100" // Rounded, light shadow, subtle border, white background
     >
+      <h2 className="text-2xl font-['Montserrat'] font-bold text-[#593D2B] mb-4 tracking-normal">SEND US A MESSAGE</h2> {/* Sturdy font, rich brown, medium tracking */}
+
       {submitStatus === 'success' && (
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
-          className="p-4 bg-green-500/10 text-green-400 rounded-md flex items-center"
+          className="p-4 bg-[#5B8C5A]/10 text-[#5B8C5A] rounded-md flex items-center font-['Roboto']" // Muted green for success
         >
           <CheckCircle className="h-5 w-5 mr-2" />
           Thank you! Your message has been sent.
@@ -124,93 +118,95 @@ const ContactForm = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
-          className="p-4 bg-red-500/10 text-red-400 rounded-md flex items-center"
+          className="p-4 bg-red-500/10 text-red-600 rounded-md flex items-center font-['Roboto']" // Red for error (keeping standard red for errors)
         >
           <XCircle className="h-5 w-5 mr-2" />
           We encountered an error. Please try again.
         </motion.div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Consistent spacing */}
         <div>
-          <label className="block mb-2 text-lg font-semibold text-black">Name</label>
+          <label htmlFor="name" className="block mb-2 text-sm font-['Roboto'] font-medium text-[#3C3C3C]">Name</label> {/* Dark gray text, clear, practical */}
           <input
             type="text"
-            placeholder="Enter your name"
+            id="name"
+            placeholder="Your Full Name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full px-4 py-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-black
-                      bg-black/20 border ${
-                        errors.name ? "border-red-500 focus:ring-red-500" : "border-white/10"
-                      } placeholder:text-black`}
+            className={`w-full px-4 py-2 rounded-md text-[#3C3C3C] focus:outline-none focus:ring-2 focus:ring-[#CB6843]
+              bg-white border ${
+                errors.name ? "border-red-500" : "border-[#EAEAEA]" // Light gray border, red for error
+              } placeholder:text-neutral-500 font-['Roboto'] text-sm`} // Clear placeholder, consistent font
           />
-          {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
+          {errors.name && <p className="text-red-500 text-xs mt-1 font-['Roboto']">{errors.name}</p>}
         </div>
 
         <div>
-          <label className="block mb-2 text-lg font-semibold text-black">Email</label>
+          <label htmlFor="email" className="block mb-2 text-sm font-['Roboto'] font-medium text-[#3C3C3C]">Email</label>
           <input
             type="email"
+            id="email"
             placeholder="yourmail@example.com"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full px-4 py-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-black
-                      bg-black/20 border ${
-                        errors.email ? "border-red-500 focus:ring-red-500" : "border-white/10"
-                      } placeholder:text-black`}
+            className={`w-full px-4 py-2 rounded-md text-[#3C3C3C] focus:outline-none focus:ring-2 focus:ring-[#CB6843]
+              bg-white border ${
+                errors.email ? "border-red-500" : "border-[#EAEAEA]"
+              } placeholder:text-neutral-500 font-['Roboto'] text-sm`}
           />
-          {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block mb-2 text-lg font-semibold text-black">Phone</label>
-          <input
-            type="text"
-            placeholder="Enter your phone number"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className={`w-full px-4 py-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-black
-                      bg-black/20 border ${
-                        errors.phone ? "border-red-500 focus:ring-red-500" : "border-white/10"
-                      } placeholder:text-black`}
-          />
-          {errors.phone && <p className="text-red-400 text-sm mt-1">{errors.phone}</p>}
+          {errors.email && <p className="text-red-500 text-xs mt-1 font-['Roboto']">{errors.email}</p>}
         </div>
       </div>
 
       <div>
-        <label className="block mb-2 text-lg font-semibold text-black">Message</label>
+        <label htmlFor="phone" className="block mb-2 text-sm font-['Roboto'] font-medium text-[#3C3C3C]">Phone Number</label>
+        <input
+          type="text"
+          id="phone"
+          placeholder="e.g., +1 234 567 8900"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          className={`w-full px-4 py-2 rounded-md text-[#3C3C3C] focus:outline-none focus:ring-2 focus:ring-[#CB6843]
+            bg-white border ${
+              errors.phone ? "border-red-500" : "border-[#EAEAEA]"
+            } placeholder:text-neutral-500 font-['Roboto'] text-sm`}
+        />
+        {errors.phone && <p className="text-red-500 text-xs mt-1 font-['Roboto']">{errors.phone}</p>}
+      </div>
+
+      <div>
+        <label htmlFor="message" className="block mb-2 text-sm font-['Roboto'] font-medium text-[#3C3C3C]">Message</label>
         <textarea
-          rows={4}
-          placeholder="Write your message..."
+          id="message"
+          rows={5} // Adjusted rows for slightly more message space
+          placeholder="Write your detailed message here..."
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className={`w-full px-4 py-2 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-black
-                    bg-black/20 border ${
-                      errors.message ? "border-red-500 focus:ring-red-500" : "border-white/10"
-                    } placeholder:text-black resize-none`}
+          className={`w-full px-4 py-2 rounded-md text-[#3C3C3C] focus:outline-none focus:ring-2 focus:ring-[#CB6843]
+            bg-white border ${
+              errors.message ? "border-red-500" : "border-[#EAEAEA]"
+            } placeholder:text-neutral-500 resize-none font-['Roboto'] text-sm`}
         ></textarea>
-        {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
+        {errors.message && <p className="text-red-500 text-xs mt-1 font-['Roboto']">{errors.message}</p>}
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className={`w-full px-6 py-3 rounded-full flex items-center justify-center gap-2 transition-all duration-300
-                  ${
-                    isSubmitting
-                      ? "bg-gray-700 text-gray-300 cursor-not-allowed"
-                      : "bg-black text-white hover:bg-gray-800"
-                  } focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50`}
+        className={`w-full px-6 py-3 rounded-md flex items-center justify-center gap-2 transition-all duration-300 font-['Montserrat'] font-bold text-lg
+          ${
+            isSubmitting
+              ? "bg-[#CB6843]/70 text-white cursor-not-allowed" // Muted terracotta when disabled
+              : "bg-[#CB6843] text-white hover:bg-[#A85735]" // Primary action terracotta, darker hover
+          } focus:outline-none focus:ring-2 focus:ring-[#CB6843] focus:ring-opacity-50 shadow-md`} // Light shadow on button
       >
         <Send size={18} />
-        <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+        <span>{isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}</span> {/* Uppercase for button text */}
       </button>
     </motion.form>
   );

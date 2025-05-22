@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import {
-  ChefHat,
+  ChefHat, // Or a more generic icon if 'ChefHat' is too specific
   Linkedin,
   Instagram,
   Facebook,
@@ -13,122 +13,127 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-900 text-neutral-200 pt-16 pb-8">
+    <footer className="bg-[#593D2B] text-white pt-16 pb-8"> {/* Rich brown background */}
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Company Info */}
+        {/* Main Footer Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 mb-12"> {/* Increased gap-y for more vertical separation */}
+
+          {/* Company Info Section */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <ChefHat className="h-8 w-8 text-amber-500" />
-              <span className="text-2xl font-bold text-white">TR Baking Equipments</span>
+            <div className="flex items-center gap-3 mb-5"> {/* Slightly increased gap and bottom margin */}
+             <img src="/assets/tr-logo-1.png" alt="" height={80} width={80}/> {/* Larger icon, Terracotta color */}
+              <span className="text-3xl font-['Montserrat'] font-bold text-white tracking-wide"> {/* Larger font, sturdy font for brand name, wider tracking */}
+              BAKING EQUIPMENTS {/* Used "BakePro Solutions" for consistency */}
+              </span>
             </div>
-            <p className="text-neutral-400 mb-4">
-              Empowering bakers with premium equipment since 2010. Quality products, expert consultation, and reliable support.
+            <p className="text-white text-base font-['Roboto'] leading-relaxed mb-6"> {/* Slightly larger text, clear, practical body text */}
+              Empowering bakers with premium equipment since 2017. We offer quality products, expert consultation, and reliable support for all your baking needs.
             </p>
-            <div className="flex space-x-4">
+            {/* Social Media Links */}
+            <div className="flex space-x-5"> {/* Increased space between icons */}
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-amber-500 transition-colors"
+                className="text-white hover:text-[#CB6843] transition-colors" // White icons, terracotta hover
                 aria-label="LinkedIn"
               >
-                <Linkedin size={20} />
+                <Linkedin size={24} /> {/* Larger social icons */}
               </a>
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-amber-500 transition-colors"
+                className="text-white hover:text-[#CB6843] transition-colors" // White icons, terracotta hover
                 aria-label="Instagram"
               >
-                <Instagram size={20} />
+                <Instagram size={24} />
               </a>
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 hover:text-amber-500 transition-colors"
+                className="text-white hover:text-[#CB6843] transition-colors" // White icons, terracotta hover
                 aria-label="Facebook"
               >
-                <Facebook size={20} />
+                <Facebook size={24} />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links Section */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="text-white text-xl font-['Montserrat'] font-bold uppercase tracking-normal mb-5">QUICK LINKS</h3> {/* Larger heading, uppercase, sturdy font */}
+            <ul className="space-y-4"> {/* Increased space-y for comfortable line spacing */}
               <li>
-                <Link to="/" className="text-neutral-400 hover:text-amber-500 transition-colors">
+                <Link to="/" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']"> {/* Clear, practical font, slightly larger text */}
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-neutral-400 hover:text-amber-500 transition-colors">
+                <Link to="/about" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="text-neutral-400 hover:text-amber-500 transition-colors">
+                <Link to="/products" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
                   Products
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-neutral-400 hover:text-amber-500 transition-colors">
+                <Link to="/contact" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
                   Contact
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Products */}
+          {/* Products Section */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Products</h3>
-            <ul className="space-y-2">
+            <h3 className="text-white text-xl font-['Montserrat'] font-bold uppercase tracking-normal mb-5">PRODUCTS</h3> {/* Larger heading, uppercase, sturdy font */}
+            <ul className="space-y-4"> {/* Increased space-y for comfortable line spacing */}
               <li>
-                <Link to="/products?category=spiral+mixer" className="text-neutral-400 hover:text-amber-500 transition-colors">
+                <Link to="/products?category=mixers" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
                   Mixers
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=convection+oven" className="text-neutral-400 hover:text-amber-500 transition-colors">
+                <Link to="/products?category=ovens" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
                   Ovens
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=rotary+rack+oven" className="text-neutral-400 hover:text-amber-500 transition-colors">
+                <Link to="/products?category=baking-tools" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
                   Baking Tools
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info Section */}
           <div>
-            <h3 className="text-white text-lg font-semibold mb-4">Contact Us</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-amber-500 mt-0.5" />
-                <span className="text-neutral-400">
+            <h3 className="text-white text-xl font-['Montserrat'] font-bold uppercase tracking-normal mb-5">CONTACT US</h3> {/* Larger heading, uppercase, sturdy font */}
+            <ul className="space-y-5"> {/* Increased space-y for comfortable line spacing */}
+              <li className="flex items-start gap-4"> {/* Increased gap */}
+                <MapPin className="h-6 w-6 text-[#CB6843] mt-0.5" /> {/* Larger icon, Terracotta icon */}
+                <address className="not-italic text-white text-base font-['Roboto'] leading-relaxed"> {/* Clear, practical body text */}
                   GALA NO 91, BADRUDDIN COMPOUND, KHAIRANI ROAD, SAKINAKA, MUMBAI - 400072
-                </span>
+                </address>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-amber-500" />
+              <li className="flex items-center gap-4"> {/* Increased gap */}
+                <Phone className="h-6 w-6 text-[#CB6843]" /> {/* Larger icon, Terracotta icon */}
                 <a
                   href="tel:+917021356127"
-                  className="text-neutral-400 hover:text-amber-500 transition-colors"
+                  className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']"
                 >
                   +91 70213 56127
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-amber-500" />
+              <li className="flex items-center gap-4"> {/* Increased gap */}
+                <Mail className="h-6 w-6 text-[#CB6843]" /> {/* Larger icon, Terracotta icon */}
                 <a
                   href="mailto:trbakingequipments@gmail.com"
-                  className="text-neutral-400 hover:text-amber-500 transition-colors"
+                  className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']"
                 >
                   trbakingequipments@gmail.com
                 </a>
@@ -137,16 +142,16 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="pt-8 border-t border-neutral-800 text-center text-white space-y-2">
-          <p>&copy; {currentYear} TR Baking Equipments. All rights reserved.</p>
+        {/* Copyright and Developer Info */}
+        <div className="pt-8 border-t border-[#707070] text-center text-white space-y-2 font-['Roboto']"> {/* Subtle border with better contrast, clear body text */}
+          <p>&copy; {currentYear} TR BAKING EQUIPMENTS. All rights reserved.</p> {/* Updated company name */}
           <p>
-            Developed with <span className="text-red-500">❤️</span> by{' '}
+            Developed with <span style={{ color: '#CB6843' }}>❤️</span> by{' '} {/* Heart in terracotta for brand consistency */}
             <a
               href="https://nextgrid.solutions"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:text-amber-500 transition-colors"
+              className="text-white hover:text-[#CB6843] transition-colors" // Terracotta hover
             >
               nextgrid.solutions
             </a>
