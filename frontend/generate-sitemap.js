@@ -1,5 +1,5 @@
-const { SitemapStream, streamToPromise } = require('sitemap');
-const { createWriteStream } = require('fs');
+import { SitemapStream, streamToPromise } from "sitemap";
+import { createWriteStream } from "fs"
 
 async function generateSitemap() {
   const sitemap = new SitemapStream({ hostname: 'https://www.trbakingequipments.com' });
