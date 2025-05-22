@@ -1,42 +1,30 @@
-import {SitemapStream, streamToPromise}from "sitemap"
-import {createWriteStream}from "fs"
-
-const hostname = 'https://www.trbakingequipments.com';
+const { SitemapStream, streamToPromise } = require('sitemap');
+const { createWriteStream } = require('fs');
 
 async function generateSitemap() {
-  const sitemap = new SitemapStream({ hostname });
+  const sitemap = new SitemapStream({ hostname: 'https://www.trbakingequipments.com' });
   const writeStream = createWriteStream('./dist/sitemap.xml');
   sitemap.pipe(writeStream);
 
-  // Static pages
-  const staticRoutes = [
-    '/',
-    '/equipment',
-    '/about',
-    '/contact',
-  ];
+  const staticRoutes = ['/', '/equipment', '/about', '/contact'];
 
   staticRoutes.forEach(route => {
-    sitemap.write({
-      url: route,
-      changefreq: 'monthly',
-      priority: 0.8,
-    });
+    sitemap.write({ url: route, changefreq: 'monthly', priority: 0.8 });
   });
 
-  // Product categories with query string
   const categoryLinks = [
-    { name: 'OVENS', category: 'rotary+rack+oven' },
-    { name: 'MIXERS', category: 'spiral+mixer' },
-    { name: 'SLICERS', category: 'toast+bread+slicer' },
-    { name: 'SHEETERS', category: 'dough+sheeter' },
+    'rotary+rack+oven',
+    'spiral+mixer',
+    'toast+bread+slicer',
+    'dough+sheeter'
   ];
 
-  categoryLinks.forEach(({ category }) => {
+  categoryLinks.forEach(category => {
+    const encodedCategory = encodeURIComponent(category);
     sitemap.write({
-      url: `/equipment?category=${category}`,
+      url: `/equipment?category=${encodedCategory}`,
       changefreq: 'monthly',
-      priority: 0.9,
+      priority: 0.9
     });
   });
 
