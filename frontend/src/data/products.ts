@@ -7,7 +7,7 @@ export const productGroups: ProductGroup[] = [
     name: "Rotary Rack Oven",
     category: "Rotary Rack Oven",
     description:
-      "We introduce a range of rotary rack ovens suitable for different manufacturing levels. These ovens are equipped with a two-way steamer that enables abundant and homogeneous steam production. Completely built with stainless steel and thicker materials to maintain the absorbed heat and reduce burner ignition and fuel consumption by 40%. Easy to operate and ensures uniform baking. Latest design of heat exchanger has been adapted. You have an option of selecting the burner according to your fuel needs - LPG, diesel, or electric. All sides are covered with mineral wool insulation, with the heating chamber made of SS 304 grade steel and the body constructed in 202 grade steel.",
+      "We introduce a range of rotary rack ovens suitable for different manufacturing levels. Completely built with stainless steel and thicker materials to maintain the absorbed heat and reduce burner ignition and fuel consumption by 40%. Easy to operate and ensures uniform baking. Latest design of heat exchanger has been adapted. You have an option of selecting the burner according to your fuel needs - LPG, diesel, or electric. All sides are covered with mineral wool insulation, with the heating chamber made of SS 304 grade steel and the body constructed in 202 grade steel.",
     primaryImage: "/assets/12-Tray-Rotary-Gas-Oven2.jpg",
     variants: [
       {
@@ -15,9 +15,8 @@ export const productGroups: ProductGroup[] = [
         name: "Rotary Rack Oven TRE-12",
         model: "TRE-12",
         description:
-          "The TRE-12 single trolley rotary rack oven is designed for smaller bakeries and cafes. Equipped with a two-way steamer for abundant and homogeneous steam production. Completely built with stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. With capacity for 12 trays, it ensures consistent and precise baking results while maintaining energy efficiency. Easy to operate and ensures uniform baking with the latest design heat exchanger. All sides covered with mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
+          "The TRE-12 single trolley rotary rack oven is designed for smaller bakeries and cafes. Completely built with stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. With capacity for 12 trays, it ensures consistent and precise baking results while maintaining energy efficiency. Easy to operate and ensures uniform baking with the latest design heat exchanger. All sides covered with mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
         features: [
-          "Two-way steamer system for abundant and homogeneous steam production",
           "Heavy-duty materials",
           "Digital temperature and timer controls",
           "40% reduced fuel consumption design",
@@ -48,9 +47,8 @@ export const productGroups: ProductGroup[] = [
         name: "Rotary Rack Oven TRE-18",
         model: "TRE-18",
         description:
-          "The TRE-18 single trolley rotary rack oven provides increased capacity for growing bakery operations. Equipped with a two-way steamer for abundant and homogeneous steam production. Completely built with stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. With room for 18 trays, it delivers consistent baking performance and energy efficiency for a range of bakery products. Easy to operate and ensures uniform baking with the latest design heat exchanger. All sides covered with mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
+          "The TRE-18 single trolley rotary rack oven provides increased capacity for growing bakery operations. Completely built with stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. With room for 18 trays, it delivers consistent baking performance and energy efficiency for a range of bakery products. Easy to operate and ensures uniform baking with the latest design heat exchanger. All sides covered with mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
         features: [
-          "Two-way steamer system for abundant and homogeneous steam production",
           "Heavy-duty materials",
           "Digital temperature and timer controls",
           "40% reduced fuel consumption design",
@@ -78,9 +76,8 @@ export const productGroups: ProductGroup[] = [
         name: "Rotary Rack Oven TRE-44",
         model: "TRE-44",
         description:
-          "The TRE-44 rotary rack oven is designed for medium to large bakeries with high production needs. Equipped with an enhanced two-way steamer for abundant and homogeneous steam production. Completely built with heavy-duty stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. This powerful unit can handle 44 trays at once while maintaining perfect baking consistency and energy efficiency. Easy to operate with advanced digital controls and ensures uniform baking with a high-efficiency heat exchanger. All sides covered with superior mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
+          "The TRE-44 rotary rack oven is designed for medium to large bakeries with high production needs. Completely built with heavy-duty stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. This powerful unit can handle 44 trays at once while maintaining perfect baking consistency and energy efficiency. Easy to operate with advanced digital controls and ensures uniform baking with a high-efficiency heat exchanger. All sides covered with superior mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
         features: [
-          "Enhanced two-way steamer system for abundant and homogeneous steam production",
           "Heavy-duty materials with thicker materials",
           "Advanced digital control system",
           "40% reduced fuel consumption with high-efficiency heat exchanger",
@@ -108,9 +105,8 @@ export const productGroups: ProductGroup[] = [
         name: "Rotary Rack Oven TRE-84",
         model: "TRE-84",
         description:
-          "The TRE-84 is our highest-capacity rotary rack oven, designed for industrial bakeries and large-scale production environments. Equipped with an industrial-grade two-way steamer for abundant and homogeneous steam production. Completely built with heavy-duty stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. With space for 84 trays, this powerful unit delivers maximum output while maintaining perfect baking consistency and energy efficiency. Easy to operate with advanced digital controls and ensures uniform baking with a maximum-efficiency heat exchanger. All sides covered with premium mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
+          "The TRE-84 is our highest-capacity rotary rack oven, designed for industrial bakeries and large-scale production environments. Completely built with heavy-duty stainless steel and thicker materials to maintain absorbed heat and reduce fuel consumption by 40%. With space for 84 trays, this powerful unit delivers maximum output while maintaining perfect baking consistency and energy efficiency. Easy to operate with advanced digital controls and ensures uniform baking with a maximum-efficiency heat exchanger. All sides covered with premium mineral wool insulation, heating chamber made with SS 304 grade steel, and body in 202 grade steel. Available with LPG, diesel, or electric burner options.",
         features: [
-          "Industrial-grade two-way steamer system for abundant and homogeneous steam production",
           "Heavy-duty materials",
           "40% reduced fuel consumption with maximum-efficiency heat exchanger",
           "Premium mineral wool insulation on all sides",
@@ -150,7 +146,6 @@ export const productGroups: ProductGroup[] = [
           "The TR-520 Dough Sheeter is a robust, floor-standing machine engineered for high-volume bakeries and pastry kitchens. With its 650mm wide rollers and adjustable thickness settings, it ensures consistent and efficient dough sheeting for various baked goods.",
         features: [
           "Powerful 0.75 kW Motor",
-          "8-quart stainless steel bowl",
           "Adjustable Thickness Settings",
           "Foldable Design",
           "High Dough Capacity",
@@ -181,7 +176,6 @@ export const productGroups: ProductGroup[] = [
           "The TR 520 Dough Sheeter is a robust, floor-standing machine engineered for high-volume bakeries and pastry kitchens. With its 650mm wide rollers and adjustable thickness settings, it ensures consistent and efficient dough sheeting for various baked goods.",
         features: [
           "Powerful 0.75 kW Motor",
-          "8-quart stainless steel bowl",
           "Adjustable Thickness Settings",
           "Durable Construction",
           "Foldable Design",
@@ -214,7 +208,6 @@ export const productGroups: ProductGroup[] = [
           "The TR 650 Dough Sheeter is a robust, floor-standing machine engineered for high-volume bakeries and pastry kitchens. With its 650mm wide rollers and adjustable thickness settings, it ensures consistent and efficient dough sheeting for various baked goods.",
         features: [
           "Powerful 0.75 kW Motor",
-          "8-quart stainless steel bowl",
           "Adjustable Thickness Settings",
           "Durable Construction",
           "Foldable Design",

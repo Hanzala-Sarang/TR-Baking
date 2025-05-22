@@ -48,10 +48,10 @@ const ProductDetailPage = () => {
       setSelectedImage(baseProduct.images[0]);
 
       // Update page title
-      document.title = `${baseProduct.name} | BakePro Solutions`; // Updated brand name
+      document.title = `${baseProduct.name} | TR BAKING EQUIPMENTS`; // Updated brand name
     } else {
       // Product not found, redirect to products page
-      navigate('/products', { replace: true });
+      navigate('/equipment', { replace: true });
     }
 
     // Scroll to top when page loads
@@ -107,23 +107,22 @@ const ProductDetailPage = () => {
       // In a real application, you would send this to your backend service.
       // For this example, we'll simulate an API call.
       // Replace this with your actual fetch call to the backend
-      // const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/send-quote-request`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({
-      //     customerInfo: formData,
-      //     productDetails
-      //   }),
-      // });
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/send-quote-request`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          customerInfo: formData,
+          productDetails
+        }),
+      });
 
-      // if (!response.ok) {
-      //   throw new Error('Failed to send quote request');
-      // }
+      if (!response.ok) {
+        throw new Error('Failed to send quote request');
+      }
 
-      // For now, simulate a successful API call
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
+
 
       setFormSubmitted(true);
 
@@ -169,12 +168,12 @@ const ProductDetailPage = () => {
                 Home
               </Link>
               <ChevronRight className="h-4 w-4 mx-2 text-[#C0C0C0]" /> {/* Lighter gray for chevron */}
-              <Link to="/products" className="text-[#8D8D8D] hover:text-[#CB6843] transition-colors">
+              <Link to="/equipment" className="text-[#8D8D8D] hover:text-[#CB6843] transition-colors">
                 Products
               </Link>
               <ChevronRight className="h-4 w-4 mx-2 text-[#C0C0C0]" />
               <Link
-                to={`/products?category=${categoryName.toLowerCase()}`}
+                to={`/equipment?category=${categoryName.toLowerCase()}`}
                 className="text-[#8D8D8D] hover:text-[#CB6843] transition-colors"
               >
                 {categoryName}
@@ -313,7 +312,7 @@ const ProductDetailPage = () => {
           {/* Back to Products */}
           <div className="mt-16 text-center"> {/* Centered back button */}
             <Link
-              to="/products"
+              to="/equipment"
               className="inline-flex items-center text-[#CB6843] hover:text-[#A85735] font-['Roboto'] font-medium transition-colors text-lg" // Terracotta, darker hover, larger text
             >
               <ArrowLeft className="h-5 w-5 mr-2" />
@@ -333,7 +332,7 @@ const ProductDetailPage = () => {
               {relatedProducts.map((relatedProduct) => (
                 <Link
                   key={relatedProduct.id}
-                  to={`/products/${relatedProduct.id}`}
+                  to={`/equipment/${relatedProduct.id}`}
                   className="group"
                 >
                   <div className="bg-white rounded-md overflow-hidden border border-[#EAEAEA] shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col"> {/* Consistent card styling */}

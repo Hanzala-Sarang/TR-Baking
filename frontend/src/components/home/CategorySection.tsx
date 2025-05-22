@@ -11,7 +11,7 @@ const categories = [
     // Adjusted colors to match the BakePro Solutions palette
     iconBgColor: '#F5F0E6', // Warm cream background for icon
     iconColor: '#593D2B', // Rich brown icon color
-    link: '/products?category=spiral+mixer', // Keep original link for functionality
+    link: '/equipment?category=spiral+mixer', // Keep original link for functionality
   },
   {
     id: 'ovens',
@@ -21,7 +21,7 @@ const categories = [
     // Adjusted colors to match the BakePro Solutions palette
     iconBgColor: '#F5F0E6',
     iconColor: '#593D2B',
-    link: '/products?category=convection+oven', // Keep original link
+    link: '/equipment?category=convection+oven', // Keep original link
   },
   {
     id: 'baking-tools',
@@ -31,7 +31,7 @@ const categories = [
     // Adjusted colors to match the BakePro Solutions palette
     iconBgColor: '#F5F0E6',
     iconColor: '#593D2B',
-    link: '/products?category=baking+tools', // Adjusted link for baking tools
+    link: '/equipment?category=baking+tools', // Adjusted link for baking tools
   },
 ];
 

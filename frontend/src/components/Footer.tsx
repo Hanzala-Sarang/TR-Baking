@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import {
-  ChefHat, // Or a more generic icon if 'ChefHat' is too specific
   Linkedin,
   Instagram,
   Facebook,
@@ -76,7 +75,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
+                <Link to="/equipment" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
                   Products
                 </Link>
               </li>
@@ -93,17 +92,17 @@ const Footer = () => {
             <h3 className="text-white text-xl font-['Montserrat'] font-bold uppercase tracking-normal mb-5">PRODUCTS</h3> {/* Larger heading, uppercase, sturdy font */}
             <ul className="space-y-4"> {/* Increased space-y for comfortable line spacing */}
               <li>
-                <Link to="/products?category=mixers" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
+                <Link to="/equipment?category=spiral+mixer" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
                   Mixers
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=ovens" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
+                <Link to="/equipment?category=rotary+rack+oven" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
                   Ovens
                 </Link>
               </li>
               <li>
-                <Link to="/products?category=baking-tools" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
+                <Link to="/equipment?category=toast+bread+slicer" className="text-white text-base hover:text-[#CB6843] transition-colors font-['Roboto']">
                   Baking Tools
                 </Link>
               </li>
@@ -115,7 +114,7 @@ const Footer = () => {
             <h3 className="text-white text-xl font-['Montserrat'] font-bold uppercase tracking-normal mb-5">CONTACT US</h3> {/* Larger heading, uppercase, sturdy font */}
             <ul className="space-y-5"> {/* Increased space-y for comfortable line spacing */}
               <li className="flex items-start gap-4"> {/* Increased gap */}
-                <MapPin className="h-6 w-6 text-[#CB6843] mt-0.5" /> {/* Larger icon, Terracotta icon */}
+                <MapPin className="h-6 w-6 text-[#CB6843]" /> {/* Larger icon, Terracotta icon */}
                 <address className="not-italic text-white text-base font-['Roboto'] leading-relaxed"> {/* Clear, practical body text */}
                   GALA NO 91, BADRUDDIN COMPOUND, KHAIRANI ROAD, SAKINAKA, MUMBAI - 400072
                 </address>
@@ -143,7 +142,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright and Developer Info */}
-        <div className="pt-8 border-t border-[#707070] text-center text-white space-y-2 font-['Roboto']"> {/* Subtle border with better contrast, clear body text */}
+        <div className="pt-8 border-t border-[#707070] text-center text-xl text-white space-y-2 font-['Roboto']"> {/* Subtle border with better contrast, clear body text */}
           <p>&copy; {currentYear} TR BAKING EQUIPMENTS. All rights reserved.</p> {/* Updated company name */}
           <p>
             Developed with <span style={{ color: '#CB6843' }}>❤️</span> by{' '} {/* Heart in terracotta for brand consistency */}
