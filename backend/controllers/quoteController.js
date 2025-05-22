@@ -2,7 +2,7 @@
 
 const emailService = require('../services/emailService');
 const { validateQuoteRequest } = require('../utils/validation');
-const { sendToGoogleSheet } = require('./sheetcontroller');
+const { sendToGoogleSheet } = require('./sheetController');
 
 /**
  * Controller to handle sending quote requests via email
