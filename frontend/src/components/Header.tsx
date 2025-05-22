@@ -50,7 +50,7 @@ const Header = () => {
         {/* Logo Section - Adjusted for better sizing */}
         <Link to="/" className="flex items-center gap-3 h-20"> {/* Set a fixed height for the link container */}
           <img
-            src="/assets/tr-logo-1.png" // Ensure this path is correct for your TR logo image
+            src="/assets/tr-logo-1.webp" // Ensure this path is correct for your TR logo image
             alt="TR Baking Equipments Logo"
             height={90}
             width={90}

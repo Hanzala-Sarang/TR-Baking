@@ -20,7 +20,7 @@ const Footer = () => {
           {/* Company Info Section */}
           <div>
             <div className="flex items-center gap-3 mb-5"> {/* Slightly increased gap and bottom margin */}
-             <img src="/assets/tr-logo-1.png" alt="" height={80} width={80}/> {/* Larger icon, Terracotta color */}
+             <img src="/assets/tr-logo-1.webp" alt="" height={80} width={80}/> {/* Larger icon, Terracotta color */}
               <span className="text-3xl font-['Montserrat'] font-bold text-white tracking-wide"> {/* Larger font, sturdy font for brand name, wider tracking */}
               BAKING EQUIPMENTS {/* Used "BakePro Solutions" for consistency */}
               </span>
