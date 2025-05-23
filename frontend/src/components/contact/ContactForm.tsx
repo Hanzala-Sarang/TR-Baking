@@ -157,7 +157,7 @@ const ContactForm = () => {
           className="p-4 bg-red-50 text-red-700 flex items-center font-sans text-sm" // Clean error message
         >
           <XCircle className="h-5 w-5 mr-2" />
-          We encountered an error. Please try again.
+          At the moment we can not deliver your message, please contact with phone number .
         </motion.div>
       )}
 
