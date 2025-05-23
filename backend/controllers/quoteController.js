@@ -28,7 +28,7 @@ const quoteController = {
       
       // Prepare email content
       const emailData = {
-        to: process.env.BUSINESS_EMAIL, // The business email from environment variables
+        to: process.env.RECEIVER_EMAIL, 
         subject: `New Quote Request: From ${customerInfo.name} ${productDetails.name}`,
         customerInfo,
         productDetails

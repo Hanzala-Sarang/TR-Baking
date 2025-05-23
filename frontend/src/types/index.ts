@@ -2,6 +2,7 @@
 
 export interface Product {
   id: number;
+  slug: string;
   name: string;
   category?: string;
   model?: string;
@@ -17,6 +18,7 @@ export interface Product {
 // New type for product groups
 export interface ProductGroup {
   id: string;
+  slug: string;
   name: string;
   category: string;
   description: string;

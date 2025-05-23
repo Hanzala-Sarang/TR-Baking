@@ -3,7 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import SectionHeading from '../components/common/SectionHeading';
 import { Filter } from 'lucide-react';
 import { productGroups } from '../data/products'; // Ensure this data structure matches ProductGroup type
-import { ProductGroup } from '../types'; // Ensure this type definition is correct
+import { ProductGroup } from '../types'; // Ensure this type definition 
 
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,7 +19,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     // Update page title
-    document.title = 'Products | TR BAKING EQUIPMENTS';
+    document.title = 'Equipments | TR BAKING EQUIPMENTS';
 
     // Scroll to top when page loads
     window.scrollTo(0, 0);
@@ -123,7 +123,7 @@ const ProductsPage = () => {
               {filteredGroups.map((group) => (
                 <Link
                   key={group.id}
-                  to={`/equipment/${group.variants[0].id}`}
+                  to={`/equipment/${group.variants[0].slug}`}
                   className="group"
                 >
                   <div className="bg-white rounded-md overflow-hidden border border-[#EAEAEA] shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col"> {/* Rounded, subtle border, light shadow, subtle hover shadow */}

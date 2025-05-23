@@ -1,12 +1,12 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Check, ChevronRight, X } from 'lucide-react';
-import Button from '../components/common/Button'; // Assuming this Button component is styled according to BakePro
+import Button from '../components/common/Button';
 import { products } from '../data/products';
 import { Product } from '../types';
 
 const ProductDetailPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<string>('');
@@ -22,17 +22,24 @@ const ProductDetailPage = () => {
 
   // Group products by category and find base product
   const { baseProduct, productVariants, categoryName } = useMemo(() => {
-    const productId = parseInt(id || '0');
-    const foundProduct = products.find(p => p.id === productId);
+    if (!slug) {
+      return { baseProduct: null, productVariants: [], categoryName: '' };
+    }
+
+    // Find product by slug
+    const foundProduct = products.find(p => p.slug === slug);
 
     if (!foundProduct) {
       return { baseProduct: null, productVariants: [], categoryName: '' };
     }
 
-    // Find all products in the same category and with the same "base" name for variants
+    // Find all products in the same category and with similar base name for variants
+    const baseNameParts = foundProduct.name.split(' ');
+    const baseName = baseNameParts[0]; // Use first word as base for grouping
+    
     const categoryProducts = products.filter(p =>
       p.category === foundProduct.category &&
-      p.name.includes(foundProduct.name.split(' ')[0]) // Simple name-based grouping
+      p.name.toLowerCase().includes(baseName.toLowerCase())
     );
 
     return {
@@ -40,7 +47,7 @@ const ProductDetailPage = () => {
       productVariants: categoryProducts,
       categoryName: foundProduct.category
     };
-  }, [id]);
+  }, [slug]);
 
   useEffect(() => {
     if (baseProduct) {
@@ -48,8 +55,8 @@ const ProductDetailPage = () => {
       setSelectedImage(baseProduct.images[0]);
 
       // Update page title
-      document.title = `${baseProduct.name} | TR BAKING EQUIPMENTS`; // Updated brand name
-    } else {
+      document.title = `${baseProduct.name} | TR BAKING EQUIPMENTS`;
+    } else if (slug && !loading) {
       // Product not found, redirect to products page
       navigate('/equipment', { replace: true });
     }
@@ -63,12 +70,10 @@ const ProductDetailPage = () => {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [baseProduct, navigate]);
+  }, [baseProduct, navigate, slug, loading]);
 
   // Get variant name without category prefix
   const getVariantName = (product: Product) => {
-    // This assumes `product.model` already contains the desired variant name
-    // If not, you might need more complex logic based on your data structure
     return product.model;
   };
 
@@ -77,6 +82,11 @@ const ProductDetailPage = () => {
     setSelectedVariant(product);
     if (product.images.length > 0) {
       setSelectedImage(product.images[0]);
+    }
+    
+    // Update URL to reflect the selected variant using existing slug
+    if (product.slug !== slug) {
+      navigate(`/equipment/${product.slug}`, { replace: true });
     }
   };
 
@@ -100,13 +110,13 @@ const ProductDetailPage = () => {
       name: selectedVariant.name,
       model: selectedVariant.model,
       category: selectedVariant.category,
-      specifications: selectedVariant.specifications
+      specifications: selectedVariant.specifications,
+      slug: selectedVariant.slug
     };
 
     try {
       // In a real application, you would send this to your backend service.
       // For this example, we'll simulate an API call.
-      // Replace this with your actual fetch call to the backend
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/send-quote-request`, {
         method: 'POST',
         headers: {
@@ -122,8 +132,6 @@ const ProductDetailPage = () => {
         throw new Error('Failed to send quote request');
       }
 
-
-
       setFormSubmitted(true);
 
       // Reset form after success
@@ -135,18 +143,17 @@ const ProductDetailPage = () => {
 
     } catch (error) {
       console.error('Error sending quote request:', error);
-      // alert('Failed to send quote request. Please try again.'); // Consider a more styled error message
+      // Consider implementing a toast notification for better UX
     } finally {
       setFormSubmitting(false);
     }
-    console.log("Customer Info:", formData);
-    console.log("Product Details:", productDetails);
+ 
   };
 
   if (loading || !selectedVariant) {
     return (
-      <div className="pt-40 pb-16 min-h-screen flex items-center justify-center bg-[#F5F0E6]"> {/* Warm cream background */}
-        <div className="animate-pulse text-[#CB6843] font-['Montserrat'] text-xl">Loading product information...</div> {/* Terracotta text, sturdy font */}
+      <div className="pt-40 pb-16 min-h-screen flex items-center justify-center bg-[#F5F0E6]">
+        <div className="animate-pulse text-[#CB6843] font-['Montserrat'] text-xl">Loading product information...</div>
       </div>
     );
   }
@@ -163,11 +170,11 @@ const ProductDetailPage = () => {
         <div className="container mx-auto px-4">
           {/* Breadcrumbs */}
           <div className="mb-8">
-            <nav className="flex items-center text-sm font-['Roboto']"> {/* Clear body text font */}
-              <Link to="/" className="text-[#8D8D8D] hover:text-[#CB6843] transition-colors"> {/* Muted gray, terracotta hover */}
+            <nav className="flex items-center text-sm font-['Roboto']">
+              <Link to="/" className="text-[#8D8D8D] hover:text-[#CB6843] transition-colors">
                 Home
               </Link>
-              <ChevronRight className="h-4 w-4 mx-2 text-[#C0C0C0]" /> {/* Lighter gray for chevron */}
+              <ChevronRight className="h-4 w-4 mx-2 text-[#C0C0C0]" />
               <Link to="/equipment" className="text-[#8D8D8D] hover:text-[#CB6843] transition-colors">
                 Products
               </Link>
@@ -179,33 +186,33 @@ const ProductDetailPage = () => {
                 {categoryName}
               </Link>
               <ChevronRight className="h-4 w-4 mx-2 text-[#C0C0C0]" />
-              <span className="text-[#3C3C3C] font-medium">{baseProduct?.name}</span> {/* Dark gray, medium weight */}
+              <span className="text-[#3C3C3C] font-medium">{baseProduct?.name}</span>
             </nav>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12"> {/* Increased gap for more breathing room */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Product Images */}
             <div>
-              <div className="bg-[#F5F0E6] rounded-lg overflow-hidden mb-4 aspect-square border border-[#EAEAEA] shadow-sm"> {/* Warm cream background, subtle border and shadow */}
+              <div className="bg-[#F5F0E6] rounded-lg overflow-hidden mb-4 aspect-square border border-[#EAEAEA] shadow-sm">
                 <img
                   src={selectedImage}
                   alt={selectedVariant.name}
-                  className="w-full h-full object-contain p-4" // Added padding to image to ensure it doesn't touch edges
+                  className="w-full h-full object-contain p-4"
                 />
               </div>
               <div className="grid grid-cols-4 gap-4">
                 {selectedVariant.images.map((image, index) => (
                   <button
                     key={index}
-                    className={`bg-[#F5F0E6] rounded-md overflow-hidden aspect-square border ${ /* Warm cream background, slightly smaller border radius */
+                    className={`bg-[#F5F0E6] rounded-md overflow-hidden aspect-square border ${
                       selectedImage === image ? 'ring-2 ring-[#CB6843] border-[#CB6843]' : 'border-[#EAEAEA]'
-                    } hover:border-[#CB6843] transition-all duration-200`} // Terracotta ring/border on active/hover
+                    } hover:border-[#CB6843] transition-all duration-200`}
                     onClick={() => setSelectedImage(image)}
                   >
                     <img
                       src={image}
                       alt={`${selectedVariant.name} view ${index + 1}`}
-                      className="w-full h-full object-cover p-2" // Added padding to thumbnails
+                      className="w-full h-full object-cover p-2"
                     />
                   </button>
                 ))}
@@ -216,31 +223,31 @@ const ProductDetailPage = () => {
             <div>
               <div className="mb-8">
                 <div className="flex items-center mb-2">
-                  <span className="text-sm text-[#8D8D8D] font-['Roboto']">{categoryName}</span> {/* Muted gray, clear body text */}
+                  <span className="text-sm text-[#8D8D8D] font-['Roboto']">{categoryName}</span>
                   {selectedVariant.badge && (
-                    <span className="ml-2 bg-[#F5F0E6] text-[#CB6843] text-xs px-3 py-1 rounded-full font-['Roboto'] font-medium"> {/* Warm cream badge, terracotta text */}
+                    <span className="ml-2 bg-[#F5F0E6] text-[#CB6843] text-xs px-3 py-1 rounded-full font-['Roboto'] font-medium">
                       {selectedVariant.badge}
                     </span>
                   )}
                 </div>
 
-                <h1 className="text-3xl md:text-4xl font-['Montserrat'] font-bold mb-4 text-[#593D2B]"> {/* Sturdy font, rich brown */}
+                <h1 className="text-3xl md:text-4xl font-['Montserrat'] font-bold mb-4 text-[#593D2B]">
                   {selectedVariant.name}
                 </h1>
 
                 {/* Variant Selection */}
                 {productVariants.length > 1 && (
                   <div className="mb-6">
-                    <h3 className="text-lg font-['Montserrat'] font-medium mb-3 text-[#593D2B]">Select Model:</h3> {/* Sturdy font, rich brown */}
-                    <div className="flex flex-wrap gap-3"> {/* Slightly increased gap */}
+                    <h3 className="text-lg font-['Montserrat'] font-medium mb-3 text-[#593D2B]">Select Model:</h3>
+                    <div className="flex flex-wrap gap-3">
                       {productVariants.map((variant) => (
                         <button
                           key={variant.id}
                           onClick={() => handleVariantChange(variant)}
-                          className={`px-5 py-2 rounded-md border text-sm font-['Roboto'] transition-colors shadow-sm ${ /* Wider padding, subtle shadow */
+                          className={`px-5 py-2 rounded-md border text-sm font-['Roboto'] transition-colors shadow-sm ${
                             selectedVariant.id === variant.id
-                              ? 'border-[#CB6843] bg-[#CB6843] text-white font-semibold' // Terracotta primary, white text, semi-bold
-                              : 'border-[#EAEAEA] hover:border-[#CB6843] text-[#3C3C3C] hover:text-[#CB6843] bg-white' // Light gray border, terracotta hover, dark gray text
+                              ? 'border-[#CB6843] bg-[#CB6843] text-white font-semibold'
+                              : 'border-[#EAEAEA] hover:border-[#CB6843] text-[#3C3C3C] hover:text-[#CB6843] bg-white'
                           }`}
                         >
                           {getVariantName(variant)}
@@ -250,14 +257,14 @@ const ProductDetailPage = () => {
                   </div>
                 )}
 
-                <p className="text-[#3C3C3C] font-['Roboto'] mb-8 text-justify leading-relaxed"> {/* Dark gray, clear body text, improved readability */}
+                <p className="text-[#3C3C3C] font-['Roboto'] mb-8 text-justify leading-relaxed">
                   {selectedVariant.description}
                 </p>
 
                 <div className="flex flex-wrap gap-4 mb-8">
                   <Button
                     onClick={() => setShowQuoteForm(true)}
-                    className="w-full md:w-auto px-8 py-3 text-lg" // Larger button, more padding, larger text
+                    className="w-full md:w-auto px-8 py-3 text-lg"
                   >
                     GET BEST QUOTE
                   </Button>
@@ -265,12 +272,12 @@ const ProductDetailPage = () => {
               </div>
 
               {/* Features */}
-              <div className="mb-8 p-6 bg-[#F5F0E6] rounded-md border border-[#EAEAEA]"> {/* Warm cream background, subtle border */}
-                <h2 className="text-xl font-['Montserrat'] font-bold mb-4 text-[#593D2B]">Key Features</h2> {/* Sturdy font, rich brown */}
-                <ul className="space-y-3"> {/* Increased space between list items */}
+              <div className="mb-8 p-6 bg-[#F5F0E6] rounded-md border border-[#EAEAEA]">
+                <h2 className="text-xl font-['Montserrat'] font-bold mb-4 text-[#593D2B]">Key Features</h2>
+                <ul className="space-y-3">
                   {selectedVariant.features.map((feature, index) => (
-                    <li key={index} className="flex items-start text-[#3C3C3C] font-['Roboto']"> {/* Dark gray, clear body text */}
-                      <Check className="h-5 w-5 text-[#5B8C5A] mr-3 mt-0.5 flex-shrink-0" /> {/* Muted green checkmark */}
+                    <li key={index} className="flex items-start text-[#3C3C3C] font-['Roboto']">
+                      <Check className="h-5 w-5 text-[#5B8C5A] mr-3 mt-0.5 flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -278,20 +285,20 @@ const ProductDetailPage = () => {
               </div>
 
               {/* Specifications */}
-              <div className="p-6 bg-[#F5F0E6] rounded-md border border-[#EAEAEA]"> {/* Warm cream background, subtle border */}
-                <h2 className="text-xl font-['Montserrat'] font-bold mb-4 text-[#593D2B]">Specifications</h2> {/* Sturdy font, rich brown */}
-                <div className="border border-[#EAEAEA] rounded-md overflow-hidden"> {/* Lighter border for table */}
+              <div className="p-6 bg-[#F5F0E6] rounded-md border border-[#EAEAEA]">
+                <h2 className="text-xl font-['Montserrat'] font-bold mb-4 text-[#593D2B]">Specifications</h2>
+                <div className="border border-[#EAEAEA] rounded-md overflow-hidden">
                   {Object.entries(selectedVariant.specifications).map(([key, value], index) => (
                     <div
                       key={key}
                       className={`flex flex-col sm:flex-row ${
-                        index % 2 === 0 ? 'bg-white' : 'bg-[#FDFBF7]' // Alternating light backgrounds for rows
+                        index % 2 === 0 ? 'bg-white' : 'bg-[#FDFBF7]'
                       }`}
                     >
-                      <div className="p-3 sm:w-1/3 font-['Roboto'] font-medium text-[#593D2B] capitalize"> {/* Rich brown, medium weight */}
+                      <div className="p-3 sm:w-1/3 font-['Roboto'] font-medium text-[#593D2B] capitalize">
                         {key.replace(/([A-Z])/g, ' $1').trim()}
                       </div>
-                      <div className="p-3 sm:w-2/3 border-t sm:border-t-0 sm:border-l border-[#EAEAEA] text-[#3C3C3C] font-['Roboto']"> {/* Lighter border, dark gray text */}
+                      <div className="p-3 sm:w-2/3 border-t sm:border-t-0 sm:border-l border-[#EAEAEA] text-[#3C3C3C] font-['Roboto']">
                         {Array.isArray(value) ? (
                           <ul className="space-y-1">
                             {value.map((item, i) => (
@@ -310,10 +317,10 @@ const ProductDetailPage = () => {
           </div>
 
           {/* Back to Products */}
-          <div className="mt-16 text-center"> {/* Centered back button */}
+          <div className="mt-16 text-center">
             <Link
               to="/equipment"
-              className="inline-flex items-center text-[#CB6843] hover:text-[#A85735] font-['Roboto'] font-medium transition-colors text-lg" // Terracotta, darker hover, larger text
+              className="inline-flex items-center text-[#CB6843] hover:text-[#A85735] font-['Roboto'] font-medium transition-colors text-lg"
             >
               <ArrowLeft className="h-5 w-5 mr-2" />
               BACK TO ALL PRODUCTS
@@ -324,27 +331,27 @@ const ProductDetailPage = () => {
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <section className="py-16 bg-[#F5F0E6]"> {/* Warm cream background */}
+        <section className="py-16 bg-[#F5F0E6]">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-['Montserrat'] font-bold mb-8 text-[#593D2B] text-center">RELATED PRODUCTS</h2> {/* Centered heading, sturdy font, rich brown */}
+            <h2 className="text-2xl font-['Montserrat'] font-bold mb-8 text-[#593D2B] text-center">RELATED PRODUCTS</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {relatedProducts.map((relatedProduct) => (
                 <Link
                   key={relatedProduct.id}
-                  to={`/equipment/${relatedProduct.id}`}
+                  to={`/equipment/${relatedProduct.slug}`}
                   className="group"
                 >
-                  <div className="bg-white rounded-md overflow-hidden border border-[#EAEAEA] shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col"> {/* Consistent card styling */}
-                    <div className="relative pt-[75%] bg-[#FDFBF7] overflow-hidden"> {/* Lighter cream background for related product images */}
+                  <div className="bg-white rounded-md overflow-hidden border border-[#EAEAEA] shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
+                    <div className="relative pt-[75%] bg-[#FDFBF7] overflow-hidden">
                       <img
                         src={relatedProduct.images[0]}
                         alt={relatedProduct.name}
-                        className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-2" // Padding for image
+                        className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 p-2"
                       />
                     </div>
                     <div className="p-4 flex flex-col flex-grow">
-                      <h3 className="font-['Montserrat'] font-bold text-[#593D2B] group-hover:text-[#CB6843] transition-colors"> {/* Sturdy font, rich brown, terracotta on hover */}
+                      <h3 className="font-['Montserrat'] font-bold text-[#593D2B] group-hover:text-[#CB6843] transition-colors">
                         {relatedProduct.name}
                       </h3>
                     </div>
@@ -358,11 +365,11 @@ const ProductDetailPage = () => {
 
       {/* Quote Request Modal */}
       {showQuoteForm && (
-        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm"> {/* Darker overlay, subtle blur */}
-          <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-100 opacity-100 transition-all duration-300 ease-out"> {/* Modal styling */}
-            <div className="p-6 md:p-8"> {/* Increased padding */}
+        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto transform scale-100 opacity-100 transition-all duration-300 ease-out">
+            <div className="p-6 md:p-8">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="text-2xl font-['Montserrat'] font-bold text-[#593D2B]">REQUEST QUOTE</h3> {/* Sturdy font, rich brown, uppercase */}
+                <h3 className="text-2xl font-['Montserrat'] font-bold text-[#593D2B]">REQUEST QUOTE</h3>
                 <button
                   onClick={() => {
                     if (!formSubmitting) {
@@ -373,33 +380,33 @@ const ProductDetailPage = () => {
                   className="text-[#8D8D8D] hover:text-[#3C3C3C] transition-colors"
                   disabled={formSubmitting}
                 >
-                  <X className="h-7 w-7" /> {/* Larger icon */}
+                  <X className="h-7 w-7" />
                 </button>
               </div>
 
               {formSubmitted ? (
                 <div className="text-center py-8">
-                  <div className="inline-flex items-center justify-center bg-[#D4EDDA] rounded-full p-3 mb-4"> {/* Muted green background for icon */}
-                    <Check className="h-10 w-10 text-[#5B8C5A]" /> {/* Larger green checkmark */}
+                  <div className="inline-flex items-center justify-center bg-[#D4EDDA] rounded-full p-3 mb-4">
+                    <Check className="h-10 w-10 text-[#5B8C5A]" />
                   </div>
-                  <h4 className="text-xl font-['Montserrat'] font-bold mb-2 text-[#593D2B]">QUOTE REQUEST SENT!</h4> {/* Sturdy font, rich brown, uppercase */}
-                  <p className="text-[#3C3C3C] font-['Roboto'] leading-relaxed"> {/* Dark gray, clear body text */}
+                  <h4 className="text-xl font-['Montserrat'] font-bold mb-2 text-[#593D2B]">QUOTE REQUEST SENT!</h4>
+                  <p className="text-[#3C3C3C] font-['Roboto'] leading-relaxed">
                     Thank you for your interest. We'll get back to you shortly with pricing information.
                   </p>
                 </div>
               ) : (
                 <>
-                  <div className="mb-6 bg-[#FDFBF7] p-4 rounded-md border border-[#EAEAEA]"> {/* Lighter cream background, subtle border */}
-                    <h4 className="font-['Montserrat'] font-medium text-[#593D2B] mb-2">Product Details</h4> {/* Sturdy font, rich brown */}
-                    <p className="text-[#3C3C3C] font-['Roboto'] font-bold">{selectedVariant.name}</p> {/* Dark gray, bold, clear body text */}
+                  <div className="mb-6 bg-[#FDFBF7] p-4 rounded-md border border-[#EAEAEA]">
+                    <h4 className="font-['Montserrat'] font-medium text-[#593D2B] mb-2">Product Details</h4>
+                    <p className="text-[#3C3C3C] font-['Roboto'] font-bold">{selectedVariant.name}</p>
                     <p className="text-[#3C3C3C] font-['Roboto']">Model: {selectedVariant.model}</p>
                     <p className="text-[#3C3C3C] font-['Roboto']">Category: {selectedVariant.category}</p>
                   </div>
 
                   <form onSubmit={handleSubmitQuoteRequest}>
-                    <div className="space-y-5"> {/* Increased space between form fields */}
+                    <div className="space-y-5">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-['Roboto'] font-medium text-[#3C3C3C] mb-1"> {/* Dark gray, clear body text */}
+                        <label htmlFor="name" className="block text-sm font-['Roboto'] font-medium text-[#3C3C3C] mb-1">
                           Your Name <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -409,7 +416,7 @@ const ProductDetailPage = () => {
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-2 border border-[#EAEAEA] rounded-md focus:ring-2 focus:ring-[#CB6843] focus:border-[#CB6843] outline-none text-[#3C3C3C] font-['Roboto']" // Lighter border, terracotta focus, dark gray text
+                          className="w-full px-4 py-2 border border-[#EAEAEA] rounded-md focus:ring-2 focus:ring-[#CB6843] focus:border-[#CB6843] outline-none text-[#3C3C3C] font-['Roboto']"
                           disabled={formSubmitting}
                         />
                       </div>
@@ -449,7 +456,7 @@ const ProductDetailPage = () => {
 
                     <Button
                       type="submit"
-                      className="w-full mt-8 px-6 py-3 text-lg" // Larger button, increased top margin
+                      className="w-full mt-8 px-6 py-3 text-lg"
                       disabled={formSubmitting}
                     >
                       {formSubmitting ? 'SENDING...' : 'SUBMIT QUOTE REQUEST'}

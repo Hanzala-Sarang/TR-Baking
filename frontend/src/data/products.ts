@@ -1,7 +1,7 @@
 import { Product, ProductGroup } from "../types";
 
 // Updated product structure to group similar products
-export const productGroups: ProductGroup[] = [
+export const productGroups = [
   {
     id: "rotary-rack-oven",
     name: "Rotary Rack Oven",
@@ -874,9 +874,26 @@ export const productGroups: ProductGroup[] = [
     ],
   },
 ];
+// Slug generator
+const generateSlug = (text) => {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/-+/g, "-") // Replace multiple hyphens with single
+    .trim()
+    .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
+};
 
-// Helper function to flatten all products for compatibility with existing code
-export const getAllProducts = (): Product[] => {
+// Add slug to each variant inside productGroups
+productGroups.forEach((group) => {
+  group.variants.forEach((variant) => {
+    variant.slug = generateSlug(variant.name);
+  });
+});
+
+// Flatten all products
+export const getAllProducts = () => {
   const allProducts: Product[] = [];
 
   productGroups.forEach((group) => {
@@ -884,6 +901,7 @@ export const getAllProducts = (): Product[] => {
       allProducts.push({
         ...variant,
         category: group.category,
+        slug: variant.slug, // Use precomputed slug
       });
     });
   });
@@ -891,26 +909,25 @@ export const getAllProducts = (): Product[] => {
   return allProducts;
 };
 
-// Get all products as a flat array for compatibility with existing code
+// Export all products
 export const products = getAllProducts();
 
-// Function to find a product group by variant id
-export const findProductGroupByVariantId = (
-  variantId: number
-): ProductGroup | undefined => {
+// Find a product group by variant ID
+export const findProductGroupByVariantId = (variantId) => {
   return productGroups.find((group) =>
     group.variants.some((variant) => variant.id === variantId)
   );
 };
 
-// Function to get a specific variant
-export const findVariantById = (variantId: number): Product | undefined => {
+// Find a specific variant by ID
+export const findVariantById = (variantId) => {
   for (const group of productGroups) {
     const variant = group.variants.find((v) => v.id === variantId);
     if (variant) {
       return {
         ...variant,
         category: group.category,
+        slug: variant.slug,
       };
     }
   }
