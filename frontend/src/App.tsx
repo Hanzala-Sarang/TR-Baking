@@ -8,10 +8,13 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Loader from './components/common/Loader';
+import usePageTracking from './hooks/usePageTracking';
 
 function App() {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+
+  usePageTracking();
 
   useEffect(() => {
     setLoading(true);

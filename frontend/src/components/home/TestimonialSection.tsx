@@ -14,7 +14,7 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    content: 'The industrial mixer we purchased from TR BAKING EQUIPMENTS has been a game-changer for our bakery. The quality is outstanding, and their customer service team was incredibly helpful during the setup process.',
+    content: 'The Spiral mixer we purchased from TR BAKING EQUIPMENTS has been a game-changer for our bakery. The quality is outstanding, and their customer service team was incredibly helpful during the setup process.',
     rating: 5,
     // Add realistic names/titles if your actual data has them
     // name: 'Chef Anya Sharma',
