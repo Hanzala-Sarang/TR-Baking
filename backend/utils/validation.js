@@ -84,6 +84,19 @@ const formatProductSpecifications = (specifications) => {
   return formattedHtml;
 };
 
+const validateBrochureDownload = (customerInfo) => {
+    if (!customerInfo || !customerInfo.name || !customerInfo.phone) {
+        return 'Your name and phone number are required to download the brochure.';
+    }
+    // Basic phone number validation (allowing + for international, digits, spaces, hyphens)
+    const phoneRegex = /^\+?[0-9\s-]{7,20}$/;
+    if (!phoneRegex.test(customerInfo.phone)) {
+        return 'Invalid phone number format. Please enter a valid phone number.';
+    }
+    return null; // No error
+};
+
+
 module.exports = {
-  formatProductSpecifications, validateQuoteRequest
+  formatProductSpecifications, validateQuoteRequest, validateBrochureDownload
 };

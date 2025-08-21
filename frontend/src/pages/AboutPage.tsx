@@ -38,20 +38,20 @@ const AboutPage = () => {
                 className="text-[#593D2B]" // Rich brown for heading
               />
               <p className="mb-6 text-[#3C3C3C] font-['Roboto'] leading-relaxed"> {/* Dark gray text, clear and practical body text */}
-                BakePro Solutions was founded in 2017 by Tanveer Khan, a passionate business person. After struggling to find high-quality, reliable equipment for the bakery, he decided to create a company that would provide premium bakery equipment along with expert consultation and support.
+                TR Baking Equipments was founded in 2017 by Tanveer Khan, a passionate business person. After struggling to find high-quality, reliable equipment for the bakery, he decided to create a company that would provide premium bakery equipment along with expert consultation and support.
               </p>
               <p className="mb-6 text-[#3C3C3C] font-['Roboto'] leading-relaxed">
                 What started as a small operation has grown into a trusted supplier of bakery equipment for professional bakers, restaurants, hotels, and home baking enthusiasts across the country. Our commitment to quality, innovation, and customer service has remained unchanged throughout our journey.
               </p>
               <p className="text-[#3C3C3C] font-['Roboto'] leading-relaxed">
-                Today, BakePro Solutions is proud to serve customers from all over the world, from small artisan bakeries to large commercial operations. We've expanded our product line to include the latest innovations in baking technology while maintaining our focus on durability, performance, and value.
+                Today, TR Baking Equipments is proud to serve customers from all over the world, from small artisan bakeries to large commercial operations. We've expanded our product line to include the latest innovations in baking technology while maintaining our focus on durability, performance, and value.
               </p>
             </div>
             {/* Image Grid - Apply slightly rounded corners and light shadows */}
             <div className="grid grid-cols-2 gap-4">
               <img
                 src="https://images.pexels.com/photos/6287301/pexels-photo-6287301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="BakePro Solutions workshop"
+                alt="TR Baking Equipments workshop"
                 className="rounded-md object-cover h-64 w-full shadow-sm" // Rounded corners, light shadow
               />
               <img

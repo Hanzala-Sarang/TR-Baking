@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const quoteRoutes = require('./routes/qouteRoutes');
 const contactRoutes = require('./routes/contactRoutes')
 const sheetRoutes = require('./routes/sheetRoutes')
+const broc = require('./routes/brochureRoutes'); // Importing the brochure routes
 const dotenv = require('dotenv');
 
 // Load environment variables from .env file
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', quoteRoutes);
 app.use('/api', contactRoutes);
 app.use('/api', sheetRoutes)
+app.use('/api', broc)
 
 // Simple health check route
 app.get('/health', (req, res) => {
